@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Weather App</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="city">Enter City Name:</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="City Name">
+            </div>
+            <button type="submit" class="btn btn-primary">Get Weather</button>
+        </form>
+        {% if weather %}
+        <div class="mt-4">
+            <h2>Weather in {{ weather.city }}</h2>
+            <p>Temperature: {{ weather.temperature }}°C</p>
+            <p>Humidity: {{ weather.humidity }}%</p>
+            <p>Wind Speed: {{ weather.wind_speed }} m/s</p>
+            <p>Condition: {{ weather.description }}</p>
+        </div>
+        {% elif error %}
+        <div class="mt-4 alert alert-danger">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
